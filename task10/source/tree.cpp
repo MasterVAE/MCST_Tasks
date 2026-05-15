@@ -7,6 +7,8 @@ Tree* CreateTree()
 {
     Tree* tree = (Tree*)calloc(1, sizeof(Tree));
     if(!tree) return NULL;
+
+    return tree;
 }
 
 void DestroyTree(Tree* tree)
@@ -15,6 +17,7 @@ void DestroyTree(Tree* tree)
 
     DestroyNode(tree->root);
 
+    free(tree->variables_offsets);
     free(tree);
 }
 
@@ -35,5 +38,7 @@ TreeNode* CreateNode(NodeType type, NodeValue value)
 
     node->type = type;
     node->value = value;
+
+    return node;
 }
 

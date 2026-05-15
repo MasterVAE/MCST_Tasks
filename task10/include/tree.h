@@ -1,6 +1,8 @@
 #ifndef TREE_H
 #define TREE_H
 
+#include <stdlib.h>
+
 enum NodeType
 {
     NODE_OPERATION,
@@ -38,6 +40,10 @@ struct Tree
 {
     TreeNode* root;
 
+    char variables['Z' - 'A' + 1];
+    size_t* variables_offsets; 
+    bool variables_values['Z' - 'A' + 1];
+
     size_t var_count;
 };
 
@@ -48,5 +54,6 @@ void DestroyTree(Tree* tree);
 TreeNode* CreateNode(NodeType type, NodeValue value);
 
 void DestroyNode(TreeNode* node);
+
 
 #endif // TREE_H

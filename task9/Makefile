@@ -83,20 +83,20 @@ else
     CFLAGS += $(RELEASE_FLAGS)
 endif
 
-SOURCES = main.cpp tree.cpp tokenizator.cpp parser.cpp runner.cpp
+SOURCES = main.cpp
 
 TARGET = $(TARGET_DIR)/prog.out
 
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SOURCES:.cpp=.o))
 
 $(TARGET): $(OBJECTS) | $(TARGET_DIR)
-	@$(CC) $(CFLAGS) $^ -o task10
+	@$(CC) $(CFLAGS) $^ -o task9
 	@echo "LINKED $@"
 
 all: $(TARGET)
 
 run: $(TARGET)
-	@./task10
+	@./task9
 
 clean:
 	@rm -rf $(OBJ_DIR)

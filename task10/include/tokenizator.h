@@ -9,6 +9,8 @@ struct Tokenizator
 {
     TreeNode* tokens;
     size_t tokens_count;
+
+    Tree* tree;
 };
 
 Tokenizator* CreateTokenizator();

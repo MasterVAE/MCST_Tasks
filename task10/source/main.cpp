@@ -2,6 +2,7 @@
 
 #include "tree.h"
 #include "runner.h"
+#include "parser.h"
 #include "tokenizator.h"
 
 int main()
@@ -12,10 +13,29 @@ int main()
 
     count = getline(&buffer, &buffer_size, stdin);
 
-    if(count == -1) return 1;
+    if(count == -1)
+    {
+        free(buffer);
+        return 1;
+    }
 
     Tokenizator* tokenizator = Tokenize(buffer);
-    printf("buffer %s\n", buffer);
-    if(!tokenizator) return 2;
+    if(!tokenizator)
+    {
+        free(buffer);
+        DestroyTokenizator(tokenizator);
+        return 2;
+    }
+
+    free(buffer);
+
+    Tree* tree = Parse(tokenizator);
+    if(!tree) return 3;
+
+    SetupTree(tokenizator);
+
+    Run(tree);
+
+    DestroyTokenizator(tokenizator);
     return 0;
 }
