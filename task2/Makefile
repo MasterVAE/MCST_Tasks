@@ -90,13 +90,13 @@ TARGET = $(TARGET_DIR)/prog.out
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SOURCES:.cpp=.o))
 
 $(TARGET): $(OBJECTS) | $(TARGET_DIR)
-	@$(CC) $(CFLAGS) $^ -o task9
+	@$(CC) $(CFLAGS) $^ -o task2
 	@echo "LINKED"
 
 all: $(TARGET)
 
 run: $(TARGET)
-	@./task9
+	@./task2
 
 clean:
 	@rm -rf $(OBJ_DIR)

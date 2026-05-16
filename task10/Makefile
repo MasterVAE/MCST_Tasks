@@ -91,7 +91,7 @@ OBJECTS = $(addprefix $(OBJ_DIR)/, $(SOURCES:.cpp=.o))
 
 $(TARGET): $(OBJECTS) | $(TARGET_DIR)
 	@$(CC) $(CFLAGS) $^ -o task10
-	@echo "LINKED $@"
+	@echo "LINKED"
 
 all: $(TARGET)
 
