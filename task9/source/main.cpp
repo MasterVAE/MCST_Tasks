@@ -34,7 +34,11 @@ int main()
         array[elements_count++] = element;
         ptr = end;
     }
-    if (elements_count == 0) { free(array); return 0; }
+    if (elements_count == 0) 
+    { 
+        free(array); 
+        return 0; 
+    }
 
     size_t max_len = 1;
     int max_sum = array[0];
