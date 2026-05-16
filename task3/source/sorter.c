@@ -35,7 +35,7 @@ void LoadSorter(Sorter* sorter, char* buffer)
     assert(sorter);
     assert(buffer);
 
-    bool start = true;
+    int start = 1;
     char* current_start = buffer;
     size_t current_len = 0;
     char c = 0;
@@ -61,7 +61,7 @@ void LoadSorter(Sorter* sorter, char* buffer)
                 sorter->lines[sorter->lines_count - 1].len = current_len;
             }
 
-            start = true;
+            start = 1;
             current_start = buffer + 1;
             current_len = 0;
 
@@ -69,7 +69,7 @@ void LoadSorter(Sorter* sorter, char* buffer)
         }
         else if(c != ' ')
         {
-            start = false;
+            start = 0;
         }
         current_len++;
         buffer++;

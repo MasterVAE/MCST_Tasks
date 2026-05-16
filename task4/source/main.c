@@ -8,29 +8,29 @@ int main(int argc, char *argv[])
 {
     opterr = 0;
 
-    char* short_opts = (char*)calloc(argc, sizeof(char));
-    if(!short_opts) return;
+    char* short_opts = (char*)calloc((size_t)argc, sizeof(char));
+    if(!short_opts) return 1;
     
     int short_cnt = 0;
-    char** long_opts = (char**)calloc(argc, sizeof(char*));
+    char** long_opts = (char**)calloc((size_t)argc, sizeof(char*));
     if(!long_opts)
     {
         free(short_opts);
-        return;
+        return 1;
     }
 
     int long_cnt = 0;
-    char** non_opts = (char**)calloc(argc, sizeof(char*));
+    char** non_opts = (char**)calloc((size_t)argc, sizeof(char*));
     if(!non_opts)
     {
         free(short_opts);
         free(long_opts);
-        return;
+        return 1;
     }
     int non_cnt = 0;
 
 
-    option long_options[] = 
+    struct option long_options[] = 
     {
         {"elbrus", required_argument, 0, 'e'},
         {0, 0, 0, 0}
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     const char* optstring = ":mcst";
 
     int opt = 0;
-    while ((opt = getopt_long(argc, argv, optstring, long_options, NULL)) != -1) 
+    while ((opt = getopt_long((size_t)argc, argv, optstring, long_options, NULL)) != -1) 
     {
         switch (opt) {
         case 'm':
@@ -90,8 +90,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    while (optind < argc)
-        non_opts[non_cnt++] = argv[optind++];
+    while (optind < argc) non_opts[non_cnt++] = argv[optind++];
 
 
     printf("Short options:");

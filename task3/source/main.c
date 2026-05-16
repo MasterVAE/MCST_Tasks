@@ -84,7 +84,7 @@ static size_t FileLen(FILE* file)
     assert(file);
 
     fseek(file, 0, SEEK_END);
-    ssize_t len = ftell(file);
+    long len = ftell(file);
     fseek(file, 0, SEEK_SET);
 
     return (size_t)len;

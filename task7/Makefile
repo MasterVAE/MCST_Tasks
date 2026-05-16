@@ -83,11 +83,11 @@ else
     CFLAGS += $(RELEASE_FLAGS)
 endif
 
-SOURCES = main.cpp
+SOURCES = main.c
 
 TARGET = $(TARGET_DIR)/prog.out
 
-OBJECTS = $(addprefix $(OBJ_DIR)/, $(SOURCES:.cpp=.o))
+OBJECTS = $(addprefix $(OBJ_DIR)/, $(SOURCES:.c=.o))
 
 $(TARGET): $(OBJECTS) | $(TARGET_DIR)
 	@$(CC) $(CFLAGS) $^ -o task7
@@ -106,7 +106,7 @@ clean:
 $(OBJ_DIR) $(TARGET_DIR):
 	@mkdir -p $@
 
-$(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.c | $(OBJ_DIR)
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 	@echo "COMPILED $<"

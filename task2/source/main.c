@@ -18,10 +18,10 @@ int main(int argc, char **argv)
         if (fd_out < 0) return 3;
 
         char buffer[BUFFER_SIZE];
-        ssize_t n;
+        ssize_t n = 0;
         while ((n = read(STDIN_FILENO, buffer, sizeof(buffer))) > 0) 
         {
-            if (write(fd_out, buffer, n) < 0) break;
+            if (write(fd_out, buffer, (size_t)n) < 0) break;
         }
 
         close(fd_out);
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
         ssize_t n;
         while ((n = read(fd_in, buffer, sizeof(buffer))) > 0) 
         {
-            if (write(STDOUT_FILENO, buffer, n) < 0) break;
+            if (write(STDOUT_FILENO, buffer, (size_t)n) < 0) break;
         }
 
         close(fd_in);

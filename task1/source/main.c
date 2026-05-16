@@ -101,10 +101,10 @@ static int Sort(size_t threads_count, size_t array_len, int* array)
 
     for (size_t i = 0; i < threads_count; i++) pthread_join(threads[i], NULL);
 
-    bool found = true;
+    int found = 1;
     while(found)
     {
-        found = false;
+        found = 0;
 
         int min_found = 0;
         size_t thread_found = 0;
@@ -115,7 +115,7 @@ static int Sort(size_t threads_count, size_t array_len, int* array)
             {
                 if(!found || array[threads_data[i].start] < min_found)
                 {
-                    found = true;
+                    found = 1;
                     min_found = array[threads_data[i].start];
                     thread_found = i;
                 }

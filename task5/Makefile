@@ -85,12 +85,12 @@ endif
 
 SOURCES = main.c
 
-TARGET = $(TARGET_DIR)/prog.out
+TARGET = task5
 
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SOURCES:.c=.o))
 
 $(TARGET): $(OBJECTS) | $(TARGET_DIR)
-	@$(CC) $(CFLAGS) $^ -o task5
+	@$(CC) $(CFLAGS) $^ -o $@
 	@echo "LINKED"
 
 all: $(TARGET)
