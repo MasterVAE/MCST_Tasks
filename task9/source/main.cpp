@@ -6,10 +6,10 @@
 
 int main()
 {
-    char line[1024];
-    if (!fgets(line, sizeof(line), stdin))return 0;
+    char *line = NULL;
+    size_t size = 0;
+    size_t len = (size_t)getline(&line, &size, stdin);
 
-    size_t len = strlen(line);
     if (len > 0 && (line[len - 1] == '\n' || line[len - 1] == EOF)) line[len - 1] = '\0';
 
     size_t capacity = 1;
@@ -52,7 +52,7 @@ int main()
     while(i < elements_count)
     {
         while(i < elements_count && array[i] > array[i - 1])
-        {   
+        {
             current_sum += array[i];
             current_len++;
             i++;

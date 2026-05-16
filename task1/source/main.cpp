@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 
     char *line = NULL;
     size_t size = 0;
-    size_t len = getline(&line, &size, stdin);
+    size_t len = (size_t)getline(&line, &size, stdin);
 
     if (len > 0 && (line[len - 1] == '\n' || line[len - 1] == EOF)) line[len - 1] = '\0';
 
