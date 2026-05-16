@@ -7,9 +7,7 @@
 
 static int Sort(size_t threads_count, size_t array_len, int* array);
 void* ChunkSort(void *arg);
-int Compare(const void *a, const void *b) ;
-
-#define BUFFER_SIZE 4096
+int Compare(const void *a, const void *b);
 
 typedef struct 
 {
@@ -40,10 +38,10 @@ int main(int argc, char* argv[])
     size_t threads_count = 0;
     sscanf(argv[1], "%lu", &threads_count);
 
-    char line[BUFFER_SIZE];
-    if (!fgets(line, sizeof(line), stdin))return 0;
+    char *line = NULL;
+    size_t size = 0;
+    size_t len = getline(&line, &size, stdin);
 
-    size_t len = strlen(line);
     if (len > 0 && (line[len - 1] == '\n' || line[len - 1] == EOF)) line[len - 1] = '\0';
 
     size_t capacity = 1;
