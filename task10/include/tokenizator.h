@@ -5,6 +5,7 @@
 
 #include "tree.h"
 
+// Стуктура, хранящая данные токенизатора
 struct Tokenizator
 {
     TreeNode* tokens;

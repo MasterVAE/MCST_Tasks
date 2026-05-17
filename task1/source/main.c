@@ -9,6 +9,7 @@ static int Sort(size_t threads_count, size_t array_len, int* array);
 void* ChunkSort(void *arg);
 int Compare(const void *a, const void *b);
 
+// Структура для хранения данных о каждом потоке сортировки
 typedef struct 
 {
     int *array;
@@ -16,6 +17,7 @@ typedef struct
     size_t end;
 } ThreadData;
 
+// Сортировка внутри потока
 void* ChunkSort(void *arg) 
 {
     ThreadData *data = (ThreadData*)arg;
@@ -24,6 +26,7 @@ void* ChunkSort(void *arg)
     return NULL;
 }
 
+// Сравнение int для qsort
 int Compare(const void *a, const void *b) 
 {
     int a_cast = *(const int*)a;
@@ -78,6 +81,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
+// Многопоточная сортировка массива
 static int Sort(size_t threads_count, size_t array_len, int* array)
 {
     assert(array);

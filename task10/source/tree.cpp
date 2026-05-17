@@ -3,6 +3,7 @@
 #include "tree.h"
 #include "assert.h"
 
+// Инициализация дерева
 Tree* CreateTree()
 {
     Tree* tree = (Tree*)calloc(1, sizeof(Tree));
@@ -11,6 +12,7 @@ Tree* CreateTree()
     return tree;
 }
 
+// Уничтожение дерева
 void DestroyTree(Tree* tree)
 {
     if(!tree) return;
@@ -21,6 +23,7 @@ void DestroyTree(Tree* tree)
     free(tree);
 }
 
+// Уничтожение ноды
 void DestroyNode(TreeNode* node)
 {
     if(!node) return;
@@ -31,6 +34,7 @@ void DestroyNode(TreeNode* node)
     free(node);
 }
 
+// Инициализация ноды
 TreeNode* CreateNode(NodeType type, NodeValue value)
 {
     TreeNode* node = (TreeNode*)calloc(1, sizeof(TreeNode));

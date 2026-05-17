@@ -3,13 +3,14 @@
 
 #include <stdlib.h>
 
+// Структура, хранящая данные о строке
 typedef struct 
 {
     const char* string;
     size_t len;
 } Line;
 
-
+// Структура, хранящая данные о сортировке
 typedef struct 
 {
     size_t capacity;

@@ -4,6 +4,7 @@
 #include "sorting_algorithms.h"
 #include "sorter.h"
 
+// Посимвольное сравнение строк
 int plain(const void* line1_void, const void* line2_void)
 {
     const Line* line1 = (const Line*)line1_void;
@@ -12,6 +13,7 @@ int plain(const void* line1_void, const void* line2_void)
     return strcmp(line1->string, line2->string);
 }
 
+// Лексикографическое сравнение строк
 int lex(const void* line1_void, const void* line2_void)
 {
     const Line* line1 = (const Line*)line1_void;
@@ -34,6 +36,8 @@ int lex(const void* line1_void, const void* line2_void)
     return line1->len > line2->len ? 1 : -1;
 }
 
+
+// Обратное посимвольное сравнение строк
 int rplain(const void* line1_void, const void* line2_void)
 {
     const Line* line1 = (const Line*)line1_void;
@@ -55,6 +59,8 @@ int rplain(const void* line1_void, const void* line2_void)
 
     return line1->len > line2->len ? 1 : -1;
 }
+
+// Обратное лексикографическое сравнение строк
 int rlex(const void* line1_void, const void* line2_void)
 {
     const Line* line1 = (const Line*)line1_void;

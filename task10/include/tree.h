@@ -3,12 +3,14 @@
 
 #include <stdlib.h>
 
+// Тип вершины дерева
 enum NodeType
 {
     NODE_OPERATION,
     NODE_VARIABLE
 };
 
+// Операция вершины дерева
 enum Operation
 {
     OP_AND,
@@ -18,13 +20,14 @@ enum Operation
     OP_BRACKET_CLOSE
 };
 
+// Значение вершины дерева
 union NodeValue
 {
     char variable;
     Operation operation;
 };
 
-
+// Вершина дерева
 struct TreeNode
 {
     NodeType type;
@@ -36,6 +39,7 @@ struct TreeNode
     bool bool_value;
 };
 
+// Дерево
 struct Tree
 {
     TreeNode* root;

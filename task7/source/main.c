@@ -49,6 +49,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
+// Размер файла
 static size_t FileLen(FILE* file)
 {
     assert(file);

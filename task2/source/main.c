@@ -12,7 +12,7 @@ int main(int argc, char **argv)
     pid_t pid = fork();
     if (pid < 0) return 2;
 
-    if (pid == 0) 
+    if (pid == 0) // дочерний процесс, отправляющий сообщения
     {
         int fd_out = open(argv[1], O_WRONLY);
         if (fd_out < 0) return 3;
@@ -25,8 +25,8 @@ int main(int argc, char **argv)
         }
 
         close(fd_out);
-    } 
-    else 
+    }
+    else // родительский процесс, получающий сообщения
     {
         int fd_in = open(argv[2], O_RDONLY);
         if (fd_in < 0) return 4;

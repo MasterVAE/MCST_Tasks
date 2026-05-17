@@ -6,6 +6,7 @@
 
 static void RunNode(Tree* tree, TreeNode* node);
 
+// Запуск операций дерева
 void Run(Tree* tree)
 {
     assert(tree);
@@ -29,6 +30,7 @@ void Run(Tree* tree)
     }
 }
 
+// Запуск операции вершины
 static void RunNode(Tree* tree, TreeNode* node)
 {
     assert(tree);

@@ -6,6 +6,7 @@
 
 static void AddToken(Tokenizator* tokenizator, NodeType type, NodeValue value);
 
+// Инициализация токенизатора
 Tokenizator* CreateTokenizator()
 {
     Tokenizator* tokenizator = (Tokenizator*)calloc(1, sizeof(Tokenizator));
@@ -22,6 +23,7 @@ Tokenizator* CreateTokenizator()
     return tokenizator;
 }
 
+// Уничтожение токенизатора
 void DestroyTokenizator(Tokenizator* tokenizator)
 {
     if(!tokenizator) return;
@@ -32,6 +34,7 @@ void DestroyTokenizator(Tokenizator* tokenizator)
     free(tokenizator);
 }
 
+// Разбиение строки на токены
 Tokenizator* Tokenize(const char* string)
 {
     Tokenizator* tokenizator = CreateTokenizator();
@@ -92,6 +95,7 @@ Tokenizator* Tokenize(const char* string)
     return tokenizator;
 }
 
+// Добавление токенов в токенизатор
 static void AddToken(Tokenizator* tokenizator, NodeType type, NodeValue value)
 {
     assert(tokenizator);

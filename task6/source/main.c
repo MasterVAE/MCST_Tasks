@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-
+// Тип файла
 const char* FileType(mode_t mode)
 {
     if(S_ISREG(mode))  return "regular file";
@@ -57,6 +57,7 @@ const char* FileType(mode_t mode)
     return "unknown type";
 }
 
+// Разрешения файла
 void SetPermissions(mode_t mode, char *str) 
 {
     str[0] = (mode & S_IRUSR) ? 'r' : '-';

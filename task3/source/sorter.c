@@ -6,6 +6,7 @@
 
 const size_t default_capaciry = 8;
 
+// Создание структуры сортировщика
 Sorter* CreateSorter()
 {
     Sorter* sorter = (Sorter*)calloc(1, sizeof(Sorter));
@@ -22,6 +23,7 @@ Sorter* CreateSorter()
     return sorter;
 }
 
+// Уничтожение структуры сортировщика
 void DestroySorter(Sorter* sorter)
 {
     if(!sorter) return;
@@ -30,6 +32,7 @@ void DestroySorter(Sorter* sorter)
     free(sorter);
 }
 
+// Загрузка строк из буффера в сортировщик
 void LoadSorter(Sorter* sorter, char* buffer)
 {
     assert(sorter);
@@ -75,6 +78,8 @@ void LoadSorter(Sorter* sorter, char* buffer)
         buffer++;
     }
 }
+
+// Сортировка строк
 void SortSorter(Sorter* sorter, int (*sort_func_ptr)(const void*, const void*))
 {
     assert(sorter);

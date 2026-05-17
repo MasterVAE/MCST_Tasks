@@ -53,6 +53,7 @@ int main(int argc, char* argv[])
     free(buffer);
 }
 
+// Помещает содержимое файла в аллоцируемый буффер
 static char* ReadFileToBuffer(const char* filename)
 {
     assert(filename);
@@ -78,7 +79,7 @@ static char* ReadFileToBuffer(const char* filename)
     return buffer;
 }
 
-
+// Размер файла
 static size_t FileLen(FILE* file)
 {
     assert(file);

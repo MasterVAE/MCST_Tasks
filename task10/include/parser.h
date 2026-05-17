@@ -4,7 +4,6 @@
 #include "tree.h"
 #include "tokenizator.h"
 
-
 Tree* Parse(Tokenizator* tokenizator);
 void SetupTree(Tokenizator* tokenizator);
 

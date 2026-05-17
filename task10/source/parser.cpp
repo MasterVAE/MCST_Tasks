@@ -19,6 +19,7 @@ static bool CheckOperation(Tokenizator* tokenizator, Operation op);
 //#define LOG(string) printf(string);
 #define LOG(string)
 
+// Парсинг токенов в дерево
 Tree* Parse(Tokenizator* tokenizator)
 {
     assert(tokenizator);
@@ -33,6 +34,7 @@ Tree* Parse(Tokenizator* tokenizator)
     return tokenizator->tree;
 }
 
+// Парсинг конструкции OR
 static TreeNode* Or(Tokenizator* tokenizator)
 {
     assert(tokenizator);
@@ -60,6 +62,7 @@ static TreeNode* Or(Tokenizator* tokenizator)
     return node;
 }
 
+// Парсинг конструкции AND
 static TreeNode* And(Tokenizator* tokenizator)
 {
     assert(tokenizator);
@@ -87,6 +90,8 @@ static TreeNode* And(Tokenizator* tokenizator)
 
     return node;
 }
+
+// Парсинг конструкции NOT
 static TreeNode* Not(Tokenizator* tokenizator)
 {
     assert(tokenizator);
@@ -107,6 +112,7 @@ static TreeNode* Not(Tokenizator* tokenizator)
     }
 }
 
+// Парсинг скобок
 static TreeNode* Brackets(Tokenizator* tokenizator)
 {
     assert(tokenizator);
@@ -135,6 +141,7 @@ static TreeNode* Brackets(Tokenizator* tokenizator)
     }
 }
 
+// Парсинг переменных
 static TreeNode* Var(Tokenizator* tokenizator)
 {
     assert(tokenizator);
@@ -154,7 +161,7 @@ static TreeNode* Var(Tokenizator* tokenizator)
     return NULL;
 }
 
-
+// Проверка текущего токена на операцию
 static bool CheckOperation(Tokenizator* tokenizator, Operation op)
 {
     assert(tokenizator);
@@ -166,6 +173,7 @@ static bool CheckOperation(Tokenizator* tokenizator, Operation op)
     return false;
 }
 
+// Настройка переменных в дереве
 void SetupTree(Tokenizator* tokenizator)
 {
     assert(tokenizator);
