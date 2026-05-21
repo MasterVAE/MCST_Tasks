@@ -11,13 +11,21 @@ static size_t FileLen(FILE* file);
 
 int main(int argc, char* argv[])
 {
-    if(argc != 2) return 1;
+    if(argc != 2)
+    {
+        fprintf(stderr, "ERROR: Must have argument\n");
+        return 1;
+    }
 
     FILE* file = fopen(argv[1], "rb+");
     size_t len = FileLen(file);
 
     pid_t pid = fork();
-    if (pid < 0) return 2;
+    if (pid < 0)
+    {
+        fprintf(stderr, "ERROR: Failed to create process\n");
+        return 2;
+    }
 
     if (pid == 0) 
     {

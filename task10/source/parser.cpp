@@ -49,7 +49,7 @@ static TreeNode* Or(Tokenizator* tokenizator)
         TreeNode* node1 = And(tokenizator);
         if(!node1)
         {
-            LOG("fail in Or\n");
+            fprintf(stderr, "ERROR: Fail in Or parsing\n");
             return NULL;
         }
 
@@ -77,8 +77,7 @@ static TreeNode* And(Tokenizator* tokenizator)
         TreeNode* node1 = Not(tokenizator);
         if(!node1)
         {
-            LOG("fail in And\n");
-
+            fprintf(stderr, "ERROR: Fail in And parsing\n");
             return NULL;
         }
 
@@ -131,7 +130,7 @@ static TreeNode* Brackets(Tokenizator* tokenizator)
         }
         else
         {
-            LOG("fail in brackets\n");
+            fprintf(stderr, "ERROR: Fail in Brackets parsing\n");
             return NULL;
         }
     }
@@ -157,7 +156,7 @@ static TreeNode* Var(Tokenizator* tokenizator)
         return CreateNode(NODE_VARIABLE, tokenizator->tokens[current_token++].value);
     }
 
-    LOG("fail in Var\n");
+    fprintf(stderr, "ERROR: Fail in Var parsing\n");
     return NULL;
 }
 

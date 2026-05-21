@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include <stdio.h>
 
 #include "tree.h"
 #include "assert.h"
@@ -7,7 +7,11 @@
 Tree* CreateTree()
 {
     Tree* tree = (Tree*)calloc(1, sizeof(Tree));
-    if(!tree) return NULL;
+    if(!tree)
+    {
+        fprintf(stderr, "ERROR: Memory allocation fail\n");
+        return NULL;
+    }
 
     return tree;
 }
@@ -38,7 +42,11 @@ void DestroyNode(TreeNode* node)
 TreeNode* CreateNode(NodeType type, NodeValue value)
 {
     TreeNode* node = (TreeNode*)calloc(1, sizeof(TreeNode));
-    if(!node) return NULL;
+    if(!node)
+    {
+        fprintf(stderr, "ERROR: Memory allocation fail\n");
+        return NULL;
+    }
 
     node->type = type;
     node->value = value;

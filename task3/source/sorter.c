@@ -10,10 +10,17 @@ const size_t default_capaciry = 8;
 Sorter* CreateSorter()
 {
     Sorter* sorter = (Sorter*)calloc(1, sizeof(Sorter));
+    if(!sorter)
+    {
+        fprintf(stderr, "ERROR: Memory allocation error\n");
+        return NULL;
+    }
+    
     sorter->capacity = default_capaciry;
     sorter->lines = (Line*)calloc(sorter->capacity, sizeof(Line));
     if(!sorter->lines)
     {
+        fprintf(stderr, "ERROR: Memory allocation error\n");
         free(sorter);
         return NULL;
     }

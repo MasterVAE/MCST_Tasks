@@ -9,13 +9,18 @@ int main(int argc, char *argv[])
     opterr = 0;
 
     char* short_opts = (char*)calloc((size_t)argc, sizeof(char));
-    if(!short_opts) return 1;
+    if(!short_opts)
+    {
+        fprintf(stderr, "ERROR: Memory allocation error\n");
+        return 1;
+    }
     
     int short_cnt = 0;
     char** long_opts = (char**)calloc((size_t)argc, sizeof(char*));
     if(!long_opts)
     {
         free(short_opts);
+        fprintf(stderr, "ERROR: Memory allocation error\n");
         return 1;
     }
 
@@ -25,6 +30,7 @@ int main(int argc, char *argv[])
     {
         free(short_opts);
         free(long_opts);
+        fprintf(stderr, "ERROR: Memory allocation error\n");
         return 1;
     }
     int non_cnt = 0;

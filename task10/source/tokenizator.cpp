@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 
 #include "tokenizator.h"
 
@@ -10,12 +11,17 @@ static void AddToken(Tokenizator* tokenizator, NodeType type, NodeValue value);
 Tokenizator* CreateTokenizator()
 {
     Tokenizator* tokenizator = (Tokenizator*)calloc(1, sizeof(Tokenizator));
-    if(!tokenizator) return NULL;
+    if(!tokenizator)
+    {
+        fprintf(stderr, "ERROR: Memory allocation fail\n");
+        return NULL;
+    }
 
     tokenizator->tokens = (TreeNode*)calloc(1, sizeof(TreeNode));
     if(!tokenizator->tokens)
     {
         free(tokenizator);
+        fprintf(stderr, "ERROR: Memory allocation fail\n");
         return NULL;
     }
     tokenizator->tokens_count = 0;
@@ -43,7 +49,7 @@ Tokenizator* Tokenize(const char* string)
     bool start = true;
     while(*string != '\n')
     {
-        if(*string == ' ')
+        if(isspace(*string))
         {
             string++;
             start = true;
@@ -88,6 +94,7 @@ Tokenizator* Tokenize(const char* string)
         }
         else
         {
+            fprintf(stderr, "ERROR: Unknown token\n");
             return NULL;
         }
     }

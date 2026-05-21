@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 {
     if(argc != 4)
     {
-        fprintf(stderr, "ERROR: Must have 3 params\n");
+        fprintf(stderr, "ERROR: Must have 3 agruments\n");
         return 1;
     }
 

@@ -16,6 +16,7 @@ int main()
     if(count == -1)
     {
         free(buffer);
+        fprintf(stderr, "ERROR: Failed to getline\n");
         return 1;
     }
 
@@ -23,14 +24,18 @@ int main()
     if(!tokenizator)
     {
         free(buffer);
-        DestroyTokenizator(tokenizator);
+        fprintf(stderr, "ERROR: Tokenization failed\n");
         return 2;
     }
 
     free(buffer);
 
     Tree* tree = Parse(tokenizator);
-    if(!tree) return 3;
+    if(!tree)
+    {
+        fprintf(stderr, "ERROR: Parsing error\n");
+        return 3;
+    }
 
     SetupTree(tokenizator);
 

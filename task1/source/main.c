@@ -37,7 +37,11 @@ int Compare(const void *a, const void *b)
 
 int main(int argc, char* argv[])
 {
-    if(argc != 2) return 1;
+    if(argc != 2)
+    {   
+        fprintf(stderr, "ERROR: Must be for 1 argument\n");
+        return 1;
+    }
     size_t threads_count = 0;
     sscanf(argv[1], "%lu", &threads_count);
 
@@ -87,10 +91,18 @@ static int Sort(size_t threads_count, size_t array_len, int* array)
     assert(array);
 
     pthread_t* threads = (pthread_t*)calloc(threads_count, sizeof(pthread_t));
-    if(!threads) return 2;
+    if(!threads)
+    {   
+        fprintf(stderr, "ERROR: Memory allocation error\n");
+        return 2;
+    }
 
     ThreadData* threads_data = (ThreadData*)calloc(threads_count, sizeof(ThreadData));
-    if(!threads_data) return 2;
+    if(!threads_data) 
+    {
+        fprintf(stderr, "ERROR: Memory allocation error\n");
+        return 2;
+    }
 
     size_t base = array_len / threads_count;
     size_t rem  = array_len % threads_count;
